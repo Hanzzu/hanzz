@@ -1,0 +1,21 @@
+let mufar = async (m, { conn }) => {
+let totalf = Object.keys(global.plugins)
+  .filter(plugin => !plugin.disabled)
+  .map(plugin => {
+    const helpArray = Array.isArray(global.plugins[plugin].help)
+      ? global.plugins[plugin].help
+      : [global.plugins[plugin].help];
+
+    return {
+      help: helpArray,
+      helpCount: helpArray.length
+    };
+  })
+  .reduce((total, plugin) => total + plugin.helpCount, 0);
+m.reply(`Total Fitur saat ini: ${totalf}`)
+}
+
+mufar.help = ['totalfitur']
+mufar.tags = ['info']
+mufar.command = ['totalfitur']
+export default mufar
